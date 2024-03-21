@@ -33,6 +33,11 @@ public class Kontener
 
     public virtual void zaladujladunek(int Masa)
     {
+        if (Masa>max_masa)
+        {
+            throw new OverfillException("za duza masa");
+        }
+        masa = Masa;
         throw new NotImplementedException();
     }
     
