@@ -10,12 +10,13 @@ public class Kontener
     public int max_masa{ get; }
     private int nnumer=0;
     
-    public Kontener(int masaladunku, int Wysokosc, int wagawlasna, int glebokosc)
+    public Kontener(int masaladunku, int Wysokosc, int wagawlasna, int glebokosc, int wagamax)
     {
         masa=masaladunku ;
         wysokosc = Wysokosc;
         waga_własna = wagawlasna;
         Glebokosc = glebokosc;
+        max_masa = wagamax;
         numer_seryjny = GenerujNumerSeryjny();
     }
 
@@ -37,8 +38,12 @@ public class Kontener
         {
             throw new OverfillException("za duza masa");
         }
-        masa = Masa;
-        throw new NotImplementedException();
+        else
+        {
+         masa = Masa;   
+        }
+        
+        
     }
     
 
