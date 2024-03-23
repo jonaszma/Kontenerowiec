@@ -8,25 +8,25 @@ public class Kontener
     public int Glebokosc{ get; set; }
     public String numer_seryjny{ get; set; }
     public double max_masa{ get; }
-    private int nnumer=0;
+    private static int nnumer=0;
     
     
-    public Kontener(double masaladunku, int Wysokosc, int wagawlasna, int glebokosc, double wagamax)
+    public Kontener( int Wysokosc, int wagawlasna, int glebokosc, double wagamax,string ko)
     {
-        masa=masaladunku ;
+        masa=0 ;
         wysokosc = Wysokosc;
         waga_własna = wagawlasna;
         Glebokosc = glebokosc;
         max_masa = wagamax;
-        numer_seryjny = GenerujNumerSeryjny();
+        numer_seryjny = GenerujNumerSeryjny(ko);
     }
 
-    private string GenerujNumerSeryjny()
+    private string GenerujNumerSeryjny(string ko)
     {
         string rodzajKontenera = this.GetType().Name.Substring(0, 3).ToUpper();
         int numer = nnumer++;
         
-        return $"Kon-{rodzajKontenera}-{numer}";
+        return $"KON-{ko}-{numer}";
     }
 
     public virtual void oproznijladunek()
@@ -50,7 +50,7 @@ public class Kontener
 
     public override string ToString()
     {
-        return $"{numer_seryjny}-masa: {masa}-max_masa: {max_masa}-wysokosc: {wysokosc}-glebokosc: {Glebokosc}-waga wlasna: {waga_własna}";
+        return $"{numer_seryjny}- masa: {masa} -max_masa: {max_masa}-wysokosc: {wysokosc}-glebokosc: {Glebokosc}-waga wlasna: {waga_własna}";
     }
 }
 

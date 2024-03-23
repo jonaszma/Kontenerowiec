@@ -5,8 +5,8 @@ public class Kontener_na_Plyny : Kontener, IHazardNotifier
     
     public bool ladunek_niebezpieczny { get; }
 
-    public Kontener_na_Plyny(double masaLadunku, int wysokosc, int wagaWlasna, int glebokosc, double max_masa,
-         bool lad_niebezpieczny) : base(masaLadunku,wysokosc,wagaWlasna, glebokosc,max_masa)
+    public Kontener_na_Plyny( int wysokosc, int wagaWlasna, int glebokosc, double max_masa,
+         bool lad_niebezpieczny,string ko="L") : base(wysokosc,wagaWlasna, glebokosc,max_masa,ko)
     {
        
         ladunek_niebezpieczny = lad_niebezpieczny;

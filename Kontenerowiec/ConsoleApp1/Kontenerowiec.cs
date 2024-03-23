@@ -7,9 +7,9 @@ public class Kontenerowiec
     private int _ilosc_kontenerów;
     private double _max_waga;
 
-    public Kontenerowiec(List<Kontener> konteners, double predkosc, int iloscKontenerów, double maxWaga)
+    public Kontenerowiec( double predkosc, int iloscKontenerów, double maxWaga)
     {
-        _konteners = konteners;
+        _konteners = new List<Kontener>();
         _Predkosc = predkosc;
         _ilosc_kontenerów = iloscKontenerów;
         _max_waga = maxWaga;
@@ -17,14 +17,29 @@ public class Kontenerowiec
 
     public void ZaladujKontener(Kontener kontener)
     {
-        _konteners.Add(kontener);
+        double waga = 0;
+        foreach (var VARIABLE in _konteners)
+        {
+            waga += VARIABLE.waga_własna + VARIABLE.masa;
+        }
+
+        waga += kontener.waga_własna + kontener.masa;
+        if (waga<_max_waga)
+        {
+          _konteners.Add(kontener);  
+        }
+        else
+        {
+            Console.WriteLine("przekroczono dozwolona mase");
+        }
+        
     }
 
     public override string ToString()
     {
-        Console.WriteLine($"predkosc: {_Predkosc}-ilosc kontenerow: {_ilosc_kontenerów}- max waga: {_max_waga}");
+        Console.WriteLine($"predkosc: {_Predkosc}-ilosc kontenerow: {_ilosc_kontenerów}- max waga: {_max_waga} ton");
         Console.WriteLine("Kontenery:");
-        for (int i = 0; i <_konteners.Capacity; i++)
+        for (int i = 0; i <_konteners.Count; i++)
         {
             Console.WriteLine(_konteners[i]);
         }

@@ -7,8 +7,10 @@ public class Kontener_Chlodniczy :Kontener
     private double Temperatura;
     private RodzajProduktu Produkty;
     
-    public Kontener_Chlodniczy(double masaladunku, int Wysokosc, int wagawlasna, int glebokosc, double wagamax, RodzajProduktu rodzaj, double temperatura) 
-        : base(masaladunku, Wysokosc, wagawlasna, glebokosc, wagamax)
+    public Kontener_Chlodniczy(
+        int Wysokosc, int wagawlasna, int glebokosc,
+        double wagamax, RodzajProduktu rodzaj, double temperatura,string ko="C") 
+        : base( Wysokosc, wagawlasna, glebokosc, wagamax,ko)
     {
         Produkty = rodzaj;
         produkty = new List<Produkt>();
@@ -40,6 +42,18 @@ public class Kontener_Chlodniczy :Kontener
 
     public override string ToString()
     {
-        return base.ToString()+$"produkt: {Produkty}-produkty: {produkty}-waga produktow: {waga_produktow}-temperatura: {Temperatura}";
+        string lista1 = "";
+        foreach (var i in produkty)
+        {
+            lista1 += i.ToString()+ " ";
+        }
+
+        string waga = "";
+        foreach (var VARIABLE in waga_produktow)
+        {
+            waga += VARIABLE.ToString()+ " ";
+        }
+        
+        return base.ToString()+$" produkt: {Produkty}-produkty: {lista1}-waga produktow: {waga}-temperatura: {Temperatura}";
     }
 }

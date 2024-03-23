@@ -4,15 +4,15 @@ public class Kontener_Na_Gazy: Kontener, IHazardNotifier
 {
     public double Cisnienie { get; set; }
 
-    public Kontener_Na_Gazy(double masaLadunku, int wysokosc, int wagaWlasna, int glebokosc, double max_masa,
-        double cisnienie) : base(masaLadunku,wysokosc,wagaWlasna, glebokosc,max_masa)
+    public Kontener_Na_Gazy( int wysokosc, int wagaWlasna, int glebokosc, double max_masa,
+        double cisnienie,String ko="G") : base(wysokosc,wagaWlasna, glebokosc,max_masa,ko)
     {
         Cisnienie = cisnienie;
     }
 
     public override void oproznijladunek()
     {
-        masa = masa * 0.95;
+        masa = masa * 0.05;
     }
 
     public void ZgloszenieNiebezpieczenstwa(string numer)
@@ -31,6 +31,6 @@ public class Kontener_Na_Gazy: Kontener, IHazardNotifier
 
     public override string ToString()
     {
-        return base.ToString()+$"cisnienie: {Cisnienie}";
+        return base.ToString()+$"cisnienie: {Cisnienie} hPa";
     }
 }
