@@ -27,7 +27,7 @@ public class Kontener
         return $"{rodzajKontenera}-C-{numer}";
     }
 
-    public void oproznijladunek()
+    public virtual void oproznijladunek()
     {
         masa = 0;
     }

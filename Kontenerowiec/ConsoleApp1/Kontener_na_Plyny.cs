@@ -1,14 +1,14 @@
 ﻿namespace ConsoleApp1;
 
-public class Kontenerowiec_na_Plyny : Kontener, IHazardNotifier
+public class Kontener_na_Plyny : Kontener, IHazardNotifier
 {
-    public int Cisnienie { get; }
+    
     public bool ladunek_niebezpieczny { get; }
 
-    public Kontenerowiec_na_Plyny(int masaLadunku, int wysokosc, int wagaWlasna, int glebokosc, int max_masa,
-        int cisnienie, bool lad_niebezpieczny) : base(masaLadunku,wysokosc,wagaWlasna, glebokosc,max_masa)
+    public Kontener_na_Plyny(int masaLadunku, int wysokosc, int wagaWlasna, int glebokosc, int max_masa,
+         bool lad_niebezpieczny) : base(masaLadunku,wysokosc,wagaWlasna, glebokosc,max_masa)
     {
-        Cisnienie = cisnienie;
+       
         ladunek_niebezpieczny = lad_niebezpieczny;
     }
 
