@@ -4,7 +4,7 @@ public class Kontener_Na_Gazy: Kontener, IHazardNotifier
 {
     public double Cisnienie { get; set; }
 
-    public Kontener_Na_Gazy(int masaLadunku, int wysokosc, int wagaWlasna, int glebokosc, int max_masa,
+    public Kontener_Na_Gazy(double masaLadunku, int wysokosc, int wagaWlasna, int glebokosc, double max_masa,
         double cisnienie) : base(masaLadunku,wysokosc,wagaWlasna, glebokosc,max_masa)
     {
         Cisnienie = cisnienie;
@@ -17,6 +17,20 @@ public class Kontener_Na_Gazy: Kontener, IHazardNotifier
 
     public void ZgloszenieNiebezpieczenstwa(string numer)
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"Niebezpieczna sytuacja w kontenerza na plyny {numer_seryjny} : "+numer);
+    }
+
+    public override void zaladujladunek(double Masa)
+    {
+        if (masa>max_masa)
+        {
+            throw new OverfillException("przekroczone maksymalną mase");
+        }
+        base.zaladujladunek(Masa);
+    }
+
+    public override string ToString()
+    {
+        return base.ToString()+$"cisnienie: {Cisnienie}";
     }
 }

@@ -2,15 +2,16 @@
 
 public class Kontener
 {
-    public int masa { get; set; }
+    public double masa { get; set; }
     public int wysokosc{ get; set; }
     public int waga_własna{ get; set; }
     public int Glebokosc{ get; set; }
     public String numer_seryjny{ get; set; }
-    public int max_masa{ get; }
+    public double max_masa{ get; }
     private int nnumer=0;
     
-    public Kontener(int masaladunku, int Wysokosc, int wagawlasna, int glebokosc, int wagamax)
+    
+    public Kontener(double masaladunku, int Wysokosc, int wagawlasna, int glebokosc, double wagamax)
     {
         masa=masaladunku ;
         wysokosc = Wysokosc;
@@ -24,7 +25,8 @@ public class Kontener
     {
         string rodzajKontenera = this.GetType().Name.Substring(0, 3).ToUpper();
         int numer = nnumer++;
-        return $"{rodzajKontenera}-C-{numer}";
+        
+        return $"Kon-{rodzajKontenera}-{numer}";
     }
 
     public virtual void oproznijladunek()
@@ -32,7 +34,7 @@ public class Kontener
         masa = 0;
     }
 
-    public virtual void zaladujladunek(int Masa)
+    public virtual void zaladujladunek(double Masa)
     {
         if (Masa>max_masa)
         {
@@ -40,19 +42,16 @@ public class Kontener
         }
         else
         {
-         masa = Masa;   
+         masa += Masa;   
         }
         
         
     }
-    
 
-    
-    
-    
-    
-    
-    
+    public override string ToString()
+    {
+        return $"{numer_seryjny}-masa: {masa}-max_masa: {max_masa}-wysokosc: {wysokosc}-glebokosc: {Glebokosc}-waga wlasna: {waga_własna}";
+    }
 }
 
 

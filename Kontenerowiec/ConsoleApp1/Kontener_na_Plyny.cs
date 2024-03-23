@@ -5,14 +5,14 @@ public class Kontener_na_Plyny : Kontener, IHazardNotifier
     
     public bool ladunek_niebezpieczny { get; }
 
-    public Kontener_na_Plyny(int masaLadunku, int wysokosc, int wagaWlasna, int glebokosc, int max_masa,
+    public Kontener_na_Plyny(double masaLadunku, int wysokosc, int wagaWlasna, int glebokosc, double max_masa,
          bool lad_niebezpieczny) : base(masaLadunku,wysokosc,wagaWlasna, glebokosc,max_masa)
     {
        
         ladunek_niebezpieczny = lad_niebezpieczny;
     }
 
-    public override void zaladujladunek(int Masa)
+    public override void zaladujladunek(double Masa)
     {
         if (ladunek_niebezpieczny)
         {
@@ -42,6 +42,11 @@ public class Kontener_na_Plyny : Kontener, IHazardNotifier
     public void ZgloszenieNiebezpieczenstwa(string numer)
     {
         Console.WriteLine($"Niebezpieczna sytuacja w kontenerza na plyny {numer_seryjny} : "+numer);
+    }
+
+    public override string ToString()
+    {
+        return base.ToString()+$"przewozi ladunek niebezpieczny: {ladunek_niebezpieczny}";
     }
 }
 
